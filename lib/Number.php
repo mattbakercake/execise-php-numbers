@@ -57,17 +57,17 @@ class Number {
     private function getHundreds($num)
     {
         $tenStrings = new \models\Tens();
-        $hunStrings = new \models\Hundreds();
+        
+        $firstNum = $this->getTens(($num-$num%100)/100);
         
         if ($num%100 !== 0) 
         {
             $secondNum = $this->getTens($num%100);
-            $firstNum = $hunStrings->data[$num-$num%100];
-            
-            return $firstNum . " And " . $secondNum;
+
+            return $firstNum . " Hundred And " . $secondNum;
         }
-        
-        return $hunStrings->data[$num];
+
+        return $firstNum . " Hundred";    
     }
     
 }
