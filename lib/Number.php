@@ -20,12 +20,15 @@ class Number {
         $numLength = $this->getNumLength($num);
         
         switch ($numLength) {
-            case 1:
-                return $this->getTens($num);
+            case 1: //fall through case 1 & 2 same
             case 2:
                 return $this->getTens($num);
             case 3:
                 return $this->getHundreds($num);
+            case 4: //fall through case 4,5 & 6 same
+            case 5:
+            case 6:
+                return $this->getThousands($num,$numLength);
         }
     }
     
@@ -68,6 +71,29 @@ class Number {
         }
 
         return $firstNum . " Hundred";    
+    }
+    
+    private function getThousands($num, $numLength)
+    {
+        $tenStrings = new \models\Tens();
+        
+        switch ($numLength) {
+            case 4: //fall through case 4 & 5 the same
+            case 5:
+                $firstNum = $this->getTens(($num-$num%1000)/1000) . " Thousand";
+                $remainder = $num%1000;
+                break;
+            case 6:
+                $firstNum = $this->getTens(($num-$num%100000)/100000) . " Hundred Thousand";
+                $remainder = $num%100000;
+                break;
+        }
+        
+        if ($remainder > 0) {
+            return $firstNum . " " . $this->getString($remainder); 
+        }
+
+        return $firstNum;  
     }
     
 }

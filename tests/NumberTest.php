@@ -174,7 +174,7 @@ class NumberTest extends PHPUnit_Framework_TestCase{
     public function thousandsProvider() 
     {
         return array(
-          array(1000,'One Thouand'),
+          array(1000,'One Thousand'),
           array(2000,'Two Thousand'),
           array(3000,'Three Thousand'),
           array(4000,'Four Thousand'),
@@ -201,6 +201,48 @@ class NumberTest extends PHPUnit_Framework_TestCase{
           array(700000,'Seven Hundred Thousand'),
           array(800000,'Eight Hundred Thousand'),
           array(900000,'Nine Hundred Thousand'),
+        );
+    }
+    
+    
+    /**
+     * @dataProvider compoundThousandsProvider
+     */
+    public function testCompoundThousands($num, $expected) 
+    {
+        $number = new lib\Number();
+        $result = $number->getString($num);
+        
+        $this->assertSame($expected, $result);
+    }
+    
+    public function compoundThousandsProvider() 
+    {
+        return array(
+          array(1001,'One Thousand And One'),
+          array(2015,'Two Thousand And Fifteen'),
+          array(3072,'Three Thousand And Seventy Two'),
+          array(4105,'Four Thousand One Hundred And Five'),
+          array(5398,'Five Thousand Three Hundred And Ninety Eight'),
+          array(6500,'Six Thousand Five Hundred'),
+          array(10001,'Ten Thousand And One'),
+          array(20019,'Twenty Thousand And Nineteen'),
+          array(30101,'Thirty Thousand One Hundred And One'),
+          array(40318,'Fourty Thousand Three Hundred And Eighteen'),
+          array(50776,'Fifty Thousand Seven Hundred And Seventy Six'),
+          array(64000,'Sixty Four Thousand'),
+          array(72001,'Seventy Two Thousand And One'),
+          array(85401,'Eighty FIve Thousand Four Hundred And One'),
+          array(97898,'Ninety Seven Thousand Eight Hundred And Ninety Eight'),
+          array(100001,'One Hundred Thousand And One'),
+          array(200018,'Two Hundred Thousand And Eighteen'),
+          array(300100,'Three Hundred Thousand One Hundred'),
+          array(400605,'Four Hundred Thousand Six Hundred And Five'),
+          array(500784,'Five Hundred Thousand Seven Hundred And Eighty Four'),
+          array(604300,'Six Hundred And Four Thousand Three Hundred'),
+          array(708216,'Seven Hundred And Eight Thousand Two Hundred And Sixteen'),
+          array(825592,'Eight Hundred And Twenty Five Thousand Five Hundred And Ninety Two'),
+          array(999999,'Nine Hundred And Ninety Nine Thousand Nine Hundred and Ninety Nine'),
         );
     }
     
