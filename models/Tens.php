@@ -36,7 +36,13 @@ class Tens {
       18 => 'Eighteen',
       19 => 'Nineteen',
       20 => 'Twenty',
-      30 => 'Thirty'
+      30 => 'Thirty',
+      40 => 'Fourty',
+      50 => 'Fifty',
+      60 => 'Sixty',
+      70 => 'Seventy',
+      80 => 'Eighty',
+      90 => 'Ninety'
     );
     
     public function __construct() {

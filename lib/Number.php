@@ -24,6 +24,8 @@ class Number {
                 return $this->getTens($num);
             case 2:
                 return $this->getTens($num);
+            case 3:
+                return $this->getHundreds($num);
         }
     }
     
@@ -39,9 +41,33 @@ class Number {
     
     private function getTens($num)
     {
-        $strings = new \models\Tens();
+        $tenStrings = new \models\Tens();
         
-        return $strings->data[$num];
+        if ($num > 19 && $num%10 !== 0) 
+        {
+            $secondNum = $tenStrings->data[$num%10];
+            $firstNum = $tenStrings->data[$num-$num%10];
+            
+            return $firstNum . " " . $secondNum;
+        }
+        
+        return $tenStrings->data[$num];
+    }
+    
+    private function getHundreds($num)
+    {
+        $tenStrings = new \models\Tens();
+        $hunStrings = new \models\Hundreds();
+        
+        if ($num%100 !== 0) 
+        {
+            $secondNum = $this->getTens($num%100);
+            $firstNum = $hunStrings->data[$num-$num%100];
+            
+            return $firstNum . " And " . $secondNum;
+        }
+        
+        return $hunStrings->data[$num];
     }
     
 }

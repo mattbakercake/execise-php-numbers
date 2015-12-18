@@ -77,4 +77,131 @@ class NumberTest extends PHPUnit_Framework_TestCase{
         );
     }
     
+    
+    /**
+     * @dataProvider compoundTensProvider
+     */
+    public function testCompoundTens($num, $expected) 
+    {
+        $number = new lib\Number();
+        $result = $number->getString($num);
+        
+        $this->assertSame($expected, $result);
+    }
+    
+    public function compoundTensProvider() 
+    {
+        return array(
+          array(21,'Twenty One'),
+          array(32,'Thirty Two'),
+          array(43,'Fourty Three'),
+          array(54,'Fifty Four'),
+          array(65,'Sixty Five'),
+          array(76,'Seventy Six'),
+          array(87,'Eighty Seven'),
+          array(98,'Ninety Eight'),
+          array(99,'Ninety Nine')
+        );
+    }
+    
+    
+    /**
+     * @dataProvider hundredsProvider
+     */
+    public function testHundreds($num, $expected) 
+    {
+        $number = new lib\Number();
+        $result = $number->getString($num);
+        
+        $this->assertSame($expected, $result);
+    }
+    
+    public function hundredsProvider() 
+    {
+        return array(
+          array(100,'One Hundred'),
+          array(200,'Two Hundred'),
+          array(300,'Three Hundred'),
+          array(400,'Four Hundred'),
+          array(500,'Five Hundred'),
+          array(600,'Six Hundred'),
+          array(700,'Seven Hundred'),
+          array(800,'Eight Hundred'),
+          array(900,'Nine Hundred')
+        );
+    }
+    
+    
+    /**
+     * @dataProvider compoundHundredsProvider
+     */
+    public function testCompundHundreds($num, $expected) 
+    {
+        $number = new lib\Number();
+        $result = $number->getString($num);
+        
+        $this->assertSame($expected, $result);
+    }
+    
+    public function compoundHundredsProvider() 
+    {
+        return array(
+          array(101,'One Hundred And One'),
+          array(215,'Two Hundred And Fifteen'),
+          array(327,'Three Hundred And Twenty Seven'),
+          array(432,'Four Hundred And Thirty Two'),
+          array(546,'Five Hundred And Fourty Six'),
+          array(658,'Six Hundred And Fifty Eight'),
+          array(763,'Seven Hundred And Sixty Three'),
+          array(874,'Eight Hundred And Seventy Four'),
+          array(989,'Nine Hundred And Eighty Nine'),
+          array(999,'Nine Hundred And Ninety Nine')
+        );
+    }
+    
+    
+    /**
+     * @dataProvider thousandsProvider
+     */
+    public function testThousands($num, $expected) 
+    {
+        $number = new lib\Number();
+        $result = $number->getString($num);
+        
+        $this->assertSame($expected, $result);
+    }
+    
+    public function thousandsProvider() 
+    {
+        return array(
+          array(1000,'One Thouand'),
+          array(2000,'Two Thousand'),
+          array(3000,'Three Thousand'),
+          array(4000,'Four Thousand'),
+          array(5000,'Five Thousand'),
+          array(6000,'Six Thousand'),
+          array(7000,'Seven Thousand'),
+          array(8000,'Eight Thousand'),
+          array(9000,'Nine Thousand'),
+          array(10000,'Ten Thousand'),
+          array(20000,'Twenty Thousand'),
+          array(30000,'Thirty Thousand'),
+          array(40000,'Fourty Thousand'),
+          array(50000,'Fifty Thousand'),
+          array(60000,'Sixty Thousand'),
+          array(70000,'Seventy Thousand'),
+          array(80000,'Eighty Thousand'),
+          array(90000,'Ninety Thousand'),
+          array(100000,'One Hundred Thousand'),
+          array(200000,'Two Hundred Thousand'),
+          array(300000,'Three Hundred Thousand'),
+          array(400000,'Four Hundred Thousand'),
+          array(500000,'Five Hundred Thousand'),
+          array(600000,'Six Hundred Thousand'),
+          array(700000,'Seven Hundred Thousand'),
+          array(800000,'Eight Hundred Thousand'),
+          array(900000,'Nine Hundred Thousand'),
+        );
+    }
+    
 }
