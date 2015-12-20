@@ -80,20 +80,40 @@ class Number {
         switch ($numLength) {
             case 4: //fall through case 4 & 5 the same
             case 5:
-                $firstNum = $this->getTens(($num-$num%1000)/1000) . " Thousand";
+                $firstNum = $this->getTens(($num-$num%1000)/1000);
                 $remainder = $num%1000;
+                if ($remainder > 99 || $remainder === 0) 
+                {
+                    $suffix = " Thousand";
+                }
+                else
+                {
+                    $suffix = " Thousand And";
+                }
                 break;
             case 6:
-                $firstNum = $this->getTens(($num-$num%100000)/100000) . " Hundred Thousand";
+                $firstNum = $this->getTens(($num-$num%100000)/100000);
                 $remainder = $num%100000;
+                if ($remainder > 999) 
+                {
+                    $suffix = " Hundred And";
+                } 
+                elseif ($remainder < 99 && $remainder !== 0)
+                {
+                    $suffix = " Hundred Thousand And";   
+                } 
+                else 
+                {
+                    $suffix = " Hundred Thousand";
+                }
                 break;
         }
         
         if ($remainder > 0) {
-            return $firstNum . " " . $this->getString($remainder); 
+            return $firstNum . $suffix . " " . $this->getString($remainder); 
         }
 
-        return $firstNum;  
+        return $firstNum . $suffix;  
     }
     
 }

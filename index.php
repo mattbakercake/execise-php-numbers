@@ -13,10 +13,8 @@
     
         require "lib/AutoLoad.php";
         $number = new lib\Number();
-        $number->getString(21);
-        
-        echo floor(log10(abs(-1))) + 1;
-        echo "index Hello World<br/>"; 
+        $number->getString(1000);
+
     ?>
     
 </body>

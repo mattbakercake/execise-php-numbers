@@ -232,7 +232,7 @@ class NumberTest extends PHPUnit_Framework_TestCase{
           array(50776,'Fifty Thousand Seven Hundred And Seventy Six'),
           array(64000,'Sixty Four Thousand'),
           array(72001,'Seventy Two Thousand And One'),
-          array(85401,'Eighty FIve Thousand Four Hundred And One'),
+          array(85401,'Eighty Five Thousand Four Hundred And One'),
           array(97898,'Ninety Seven Thousand Eight Hundred And Ninety Eight'),
           array(100001,'One Hundred Thousand And One'),
           array(200018,'Two Hundred Thousand And Eighteen'),
@@ -242,7 +242,7 @@ class NumberTest extends PHPUnit_Framework_TestCase{
           array(604300,'Six Hundred And Four Thousand Three Hundred'),
           array(708216,'Seven Hundred And Eight Thousand Two Hundred And Sixteen'),
           array(825592,'Eight Hundred And Twenty Five Thousand Five Hundred And Ninety Two'),
-          array(999999,'Nine Hundred And Ninety Nine Thousand Nine Hundred and Ninety Nine'),
+          array(999999,'Nine Hundred And Ninety Nine Thousand Nine Hundred And Ninety Nine'),
         );
     }
     
