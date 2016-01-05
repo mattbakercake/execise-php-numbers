@@ -1,37 +1,45 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace lib;
 
 /**
- * Description of Number
+ * Number class contains a public function that returns the
+ * string representation for an integer between 0-999999
  *
  * @author matt
  */
 class Number {
     
+    /**
+     * getString returns string representation of provided integer parameter
+     * 
+     * @param integer $num
+     * @return string 
+     */
     public function getString($num)
     {
-        $numLength = $this->getNumLength($num);
+        $numLength = $this->getNumLength((int)$num);
         
         switch ($numLength) {
             case 1: //fall through case 1 & 2 same
             case 2:
-                return $this->getTens($num);
+                return $this->getTens((int)$num);
             case 3:
-                return $this->getHundreds($num);
+                return $this->getHundreds((int)$num);
             case 4: //fall through case 4,5 & 6 same
             case 5:
             case 6:
-                return $this->getThousands($num,$numLength);
+                return $this->getThousands((int)$num,(int)$numLength);
         }
     }
     
+    /**
+     * getNumLength returns integer representing the length of the
+     * provided integer parameter
+     * 
+     * @param integer $num
+     * @return int
+     */
     private function getNumLength($num)
     {
         if ($num === 0)
@@ -42,6 +50,13 @@ class Number {
         return floor(log10(abs($num))) + 1;
     }
     
+    /**
+     * getTens returns a string representation for numbers between
+     * 0-99
+     * 
+     * @param integer $num
+     * @return string
+     */
     private function getTens($num)
     {
         $tenStrings = new \models\Tens();
@@ -57,10 +72,15 @@ class Number {
         return $tenStrings->data[$num];
     }
     
+    /**
+     * getHundreds returns a string representation for numbers between
+     * 100-999
+     * 
+     * @param integer $num
+     * @return string
+     */
     private function getHundreds($num)
     {
-        $tenStrings = new \models\Tens();
-        
         $firstNum = $this->getTens(($num-$num%100)/100);
         
         if ($num%100 !== 0) 
@@ -73,10 +93,15 @@ class Number {
         return $firstNum . " Hundred";    
     }
     
+    /**
+     * getThousands returns a string representation for numbers between
+     * 1000-999999
+     * 
+     * @param integer $num
+     * @return string
+     */
     private function getThousands($num, $numLength)
     {
-        $tenStrings = new \models\Tens();
-        
         switch ($numLength) {
             case 4: //fall through case 4 & 5 the same
             case 5:
